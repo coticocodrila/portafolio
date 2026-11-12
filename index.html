@@ -10,20 +10,22 @@
 <style>
   :root{
     --bg: #FFFFFF;
-    --hero-bg: #9B72F8;
+    --hero-bg: #FFFFFF;
+    --gray: #F4F4F5;
+    --fluor: #CCFF00;
     --ink: #130F1C;
     --violet: #7C4DFF;
     --violet-deep: #130F1C;
     --pink: #7C4DFF;
     --yellow: #E7FF57;
     --teal: #43E8CB;
-    --calipso: #17B4C4;
-    --calipso-deep: #0C7C88;
+    --calipso: #CCFF00;
+    --calipso-deep: #7C4DFF;
     --panel: #130F1C;
     --panel-text: #FBF8FF;
     --line: rgba(19,15,28,0.14);
     --line-on-panel: rgba(251,248,255,0.16);
-    --radius: 22px;
+    --radius: 0;
     --maxw: 920px;
   }
   *{box-sizing:border-box;}
@@ -64,13 +66,13 @@
     color:var(--violet-deep);
   }
   .nav-dot{
-    width:8px; height:8px; border-radius:50%; flex:none;
+    width:8px; height:8px; border-radius:0; flex:none;
     background:var(--calipso);
     animation:navDotPulse 2.4s ease-in-out infinite;
   }
   @keyframes navDotPulse{
-    0%, 100%{box-shadow:0 0 0 0 rgba(23,180,196,0.35);}
-    50%{box-shadow:0 0 0 5px rgba(23,180,196,0);}
+    0%, 100%{box-shadow:0 0 0 0 rgba(124,77,255,0.35);}
+    50%{box-shadow:0 0 0 5px rgba(124,77,255,0);}
   }
   .nav-mid{
     display:flex; align-items:center; gap:22px; flex:1; justify-content:flex-end;
@@ -82,13 +84,13 @@
     transition:border-color .15s ease, color .15s ease;
   }
   .nav-links a:hover, .nav-links a.active{
-    border-color:var(--calipso); color:var(--calipso-deep);
+    border-color:var(--violet); color:var(--violet);
   }
   .nav-cta{
     display:inline-flex; align-items:center; flex:none;
     font-size:0.86rem; font-weight:700; text-decoration:none;
     background:var(--calipso); color:var(--ink);
-    padding:9px 18px; border-radius:100px;
+    padding:9px 18px; border-radius:0;
     transition:transform .15s ease, background .15s ease;
   }
   .nav-cta:hover{background:var(--calipso-deep); color:var(--panel-text); transform:translateY(-1px);}
@@ -108,8 +110,11 @@
     overflow:hidden;
   }
   .eyebrow{
+    display:inline-block;
     font-size:0.95rem;
-    color:var(--violet-deep);
+    color:var(--ink);
+    background:var(--fluor);
+    padding:3px 10px; border-radius:0;
     font-weight:700;
     margin-bottom:16px;
   }
@@ -137,12 +142,14 @@
     flex:1 1 320px;
   }
   .hero-photo{
-    width:150px; height:150px; border-radius:16px;
+    width:150px; height:150px; border-radius:0;
     object-fit:cover; object-position:50% 22%; flex:none;
     border:2px solid var(--violet-deep);
   }
+  .hero-text{flex:1 1 320px; min-width:0;}
+  .hero-text .role-line{margin:6px 0 0;}
   .hero-links{
-    margin-top:30px;
+    margin-top:20px;
     display:flex; gap:14px; flex-wrap:wrap;
     align-items:center;
   }
@@ -150,13 +157,13 @@
     display:inline-flex; align-items:center; gap:10px;
     text-decoration:none;
     padding:8px 18px 8px 8px;
-    border-radius:100px;
+    border-radius:0;
     font-size:0.92rem;
     font-weight:600;
     border:1.5px solid var(--violet-deep);
   }
   .icon-badge{
-    width:30px; height:30px; border-radius:50%; flex:none;
+    width:30px; height:30px; border-radius:0; flex:none;
     display:flex; align-items:center; justify-content:center;
     background:var(--violet-deep); color:var(--panel-text);
     font-family:'Bricolage Grotesque', sans-serif;
@@ -182,13 +189,13 @@
   /* ---- hero scroll cue ---- */
   .scroll-cue{
     display:inline-flex; align-items:center; gap:10px;
-    margin-top:52px;
+    margin-top:24px;
     text-decoration:none;
     font-size:0.82rem; font-weight:600;
     color:var(--violet-deep);
   }
   .scroll-cue-dot{
-    width:34px; height:34px; border-radius:50%; flex:none;
+    width:34px; height:34px; border-radius:0; flex:none;
     border:1.5px solid var(--violet-deep);
     display:flex; align-items:center; justify-content:center;
     animation:scrollCueBob 1.8s ease-in-out infinite;
@@ -206,6 +213,8 @@
   @media (prefers-reduced-motion: reduce){
     .scroll-cue-dot, .nav-dot{animation:none;}
   }
+  /* ---- light gray sections ---- */
+  #sobre-mi, #habilidades{background:var(--gray);}
   /* ---- section base ---- */
   section{padding:74px 0;}
   .section-head{
@@ -230,14 +239,13 @@
 
   /* ---- experience (dark panel) ---- */
   #experiencia{
-    background:var(--violet-deep); color:var(--panel-text);
+    background:var(--bg); color:var(--ink);
     position:relative;
   }
-  #experiencia h2, #experiencia .section-num{color:var(--panel-text);}
-  #experiencia .section-num{color:var(--yellow);}
-  .timeline{border-top:1px solid var(--line-on-panel);}
+  #experiencia .section-num{color:var(--violet);}
+  .timeline{border-top:1px solid var(--line);}
   .job{
-    border-bottom:1px solid var(--line-on-panel);
+    border-bottom:1px solid var(--line);
   }
   .job-head{
     display:grid; grid-template-columns:1fr 150px 26px;
@@ -255,11 +263,11 @@
   }
   .job-plus{
     width:26px; height:26px; flex:none;
-    border:1.5px solid var(--line-on-panel); border-radius:50%;
+    border:1.5px solid var(--line); border-radius:0;
     position:relative;
   }
   .job-plus::before, .job-plus::after{
-    content:''; position:absolute; background:var(--panel-text);
+    content:''; position:absolute; background:var(--ink);
     top:50%; left:50%; transform:translate(-50%,-50%);
   }
   .job-plus::before{width:10px; height:1.5px;}
@@ -273,26 +281,26 @@
   .job-body-inner{padding:0 0 28px; max-width:640px;}
   .job-body ul{margin:0; padding-left:20px;}
   .job-body li{margin-bottom:10px; font-size:0.97rem; opacity:0.92;}
-  .job-body li b{color:var(--yellow); font-weight:600;}
+  .job-body li b{background:var(--fluor); color:var(--ink); font-weight:600; padding:0 4px; border-radius:0;}
   .job-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
   .job-tags span{
-    font-size:0.76rem; padding:5px 11px; border-radius:100px;
-    border:1px solid var(--line-on-panel); opacity:0.8;
+    font-size:0.76rem; padding:5px 11px; border-radius:0;
+    border:1px solid var(--line); opacity:0.8;
   }
 
   /* ---- skills ---- */
   .skills-cats{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;}
   .cat-btn{
     font-family:inherit; font-size:0.86rem; font-weight:600;
-    padding:9px 18px; border-radius:100px; cursor:pointer;
+    padding:9px 18px; border-radius:0; cursor:pointer;
     border:1.5px solid var(--violet-deep); background:transparent; color:var(--violet-deep);
     transition:.15s;
   }
   .cat-btn.active, .cat-btn:hover{background:var(--violet-deep); color:var(--bg);}
   .chip-field{display:flex; flex-wrap:wrap; gap:10px;}
   .chip{
-    font-size:0.9rem; padding:9px 16px; border-radius:12px;
-    background:#F1ECFF; border:1px solid var(--line);
+    font-size:0.9rem; padding:9px 16px; border-radius:0;
+    background:#FFFFFF; border:1px solid var(--line);
     transition:opacity .2s, transform .2s;
   }
   .chip[hidden]{display:none;}
@@ -309,28 +317,28 @@
 
   /* ---- footer ---- */
   footer{
-    background:var(--violet-deep); color:var(--panel-text);
+    background:var(--gray); color:var(--ink);
     padding:60px 0 40px;
-    border-top:3px solid var(--calipso);
+    border-top:3px solid var(--fluor);
   }
-  footer h2{color:var(--panel-text); font-size:1.9rem; max-width:14ch;}
+  footer h2{color:var(--ink); font-size:1.9rem; max-width:14ch;}
   footer .foot-grid{
     display:flex; justify-content:space-between; align-items:flex-end;
     flex-wrap:wrap; gap:24px; margin-top:30px;
   }
-  footer .foot-links{display:flex; flex-direction:column; gap:10px;}
+  footer .foot-links{display:flex; flex-direction:row; flex-wrap:wrap; gap:12px 28px;}
   footer .foot-links a{
     text-decoration:none; font-size:1rem; font-weight:600;
-    border-bottom:1px solid var(--line-on-panel); padding-bottom:2px; width:fit-content;
+    border-bottom:1px solid var(--line); padding-bottom:2px; width:fit-content;
     transition:border-color .15s ease, color .15s ease;
   }
-  footer .foot-links a:hover{border-color:var(--calipso); color:var(--calipso);}
+  footer .foot-links a:hover{border-color:var(--violet); color:var(--violet);}
   footer .foot-note{
     display:flex; align-items:center; gap:8px;
     font-size:0.78rem; opacity:0.7; margin-top:44px;
   }
   footer .foot-note::before{
-    content:''; width:7px; height:7px; border-radius:50%;
+    content:''; width:7px; height:7px; border-radius:0;
     background:var(--calipso); flex:none;
   }
 
@@ -389,25 +397,25 @@
     <h1 class="title">Constanza<br>Leiva<br>Aguirre</h1>
     <div class="hero-lower">
       <img class="hero-photo" src="foto.png" alt="Retrato de Constanza Leiva Aguirre">
-      <p class="role-line">13 años diseñando y dirigiendo proyectos creativos. He trabajado con más de 30 marcas entre digital, branding y producto.</p>
-    </div>
-    <div class="hero-links">
-      <a class="solid" href="https://gemmstudio.cl" target="_blank" rel="noopener">
-        <span class="icon-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-        </span> Ver portafolio
-      </a>
-      <a class="ghost" href="https://www.coticocodrila.com" target="_blank" rel="noopener">
-        <span class="icon-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        </span> Animación
-      </a>
-      <a class="ghost" id="emailBtn" href="mailto:hola@gemmstudio.cl">
-        <span class="icon-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
-        </span> hola@gemmstudio.cl
-      </a>
-      <span class="copy-toast" id="copyToast">Copiado ✓</span>
+      <div class="hero-text">
+        <p class="role-line">13 años diseñando y dirigiendo proyectos creativos. He trabajado con más de 30 marcas entre digital, branding y producto.</p>
+        <div class="hero-links">
+          <a class="solid" href="https://behance.net/constanzagemm" target="_blank" rel="noopener">
+            <span class="icon-badge">Bē</span> Ver portafolio
+          </a>
+          <a class="ghost" href="https://gemmstudio.cl" target="_blank" rel="noopener">
+            <span class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </span> gemmstudio.cl
+          </a>
+          <a class="ghost" id="emailBtn" href="mailto:hola@gemmstudio.cl">
+            <span class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
+            </span> hola@gemmstudio.cl
+          </a>
+          <span class="copy-toast" id="copyToast">Copiado ✓</span>
+        </div>
+      </div>
     </div>
     <a class="scroll-cue" href="#sobre-mi">
       <span class="scroll-cue-dot">
@@ -491,7 +499,7 @@
 
 <footer id="contacto">
   <div class="wrap">
-    <h2>Conversemos sobre tu próximo proyecto.</h2>
+    <h2>Conversemos</h2>
     <div class="foot-grid">
       <div class="foot-links">
         <a href="mailto:hola@gemmstudio.cl">hola@gemmstudio.cl</a>
@@ -503,7 +511,7 @@
         <a href="#sobre-mi">Volver arriba ↑</a>
       </div>
     </div>
-    <div class="foot-note">Constanza Leiva Aguirre — Dirección de arte</div>
+    <div class="foot-note"><span>© <span id="year">2026</span> Constanza Leiva Aguirre — Dirección de arte</span></div>
   </div>
 </footer>
 
@@ -539,7 +547,7 @@
       meta: "BMR Marketing — Las Condes, Santiago (remoto)",
       period: "2020 — 2021",
       bullets: [
-        "Dirección de arte digital y dirección creativa para marcas nacionales e internacionales.",
+        "Dirección de arte digital para marcas nacionales e internacionales.",
         "Edité material audiovisual para clientes como <b>Aventura Motors</b>, <b>Café Oma Colombia</b>, <b>Viña Siegel</b> y <b>FALP</b>."
       ],
       tags: ["Dirección de arte", "Audiovisual"]
@@ -662,6 +670,9 @@
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
   document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+  // ---------- current year ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
 
   // ---------- copy email ----------
   const emailBtn = document.getElementById('emailBtn');
